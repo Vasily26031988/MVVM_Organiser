@@ -1,49 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MVVM_Organiser.ViewModel
 {
-	class ToDoViewModel:INotifyPropertyChanged
-	{
-		private bool _isDone;
-		private string _text;
+    public class ToDoViewModel : INotifyPropertyChanged
+    {
+        // TODO. Перенести в папку с моделью.
+        public class DataModel
+        {
+            public bool IsDone { get; set; }
+            public DateTime CreationDate { get; set; }
+            public string Text { get; set; }
+        }
 
-		//[JsonProperty("creationDate")]
-		public int MyProperty { get; set; }
-		public DateTime CreationDate { get; set; } = DateTime.Now;
-		public bool IsDone
-		{
-			get { return _isDone; }
-			set
-			{
-				if (_isDone == value)
-					return;
-				_isDone = value;
-				OnPropertyChanged("IsDone");
-			}
-		}
-		
-		//[JsonProperty("creationDate")]
-		public string Text
-		{
-			get { return _text; }
-			set
-			{
-				if (_text == value)
-					return;
-				_text = value;
-				OnPropertyChanged("Text");
-			}
-		}
+        private ObservableCollection<DataModel> _dataItem;
+        public ObservableCollection<DataModel> DadaItem
+        {
+            get { return _dataItem; }
+            set
+            {
+                _dataItem = value;
+                OnPropertyChanged(nameof(DadaItem));
+            }
+        }
 
-		public event PropertyChangedEventHandler PropertyChanged;
-		protected virtual void OnPropertyChanged(string propertyName)
-		{ 
-		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
+        public ToDoViewModel()
+        {
+            DadaItem = new ObservableCollection<DataModel>()
+            {
+                new DataModel { CreationDate = DateTime.Now, IsDone = false, Text = "Задача номер 1"},
+                new DataModel { CreationDate = DateTime.Now, IsDone = true, Text = "Задача номер 2" },
+            };
+        }
+        #region PropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
+    }
 }

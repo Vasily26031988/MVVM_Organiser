@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVVM_Organiser.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace MVVM_Organiser
 		public MainWindow()
 		{
 			InitializeComponent();
+			DataContext = new ToDoViewModel();
 		}
 	}
 }
