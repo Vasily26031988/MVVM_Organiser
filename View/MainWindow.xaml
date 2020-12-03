@@ -6,7 +6,29 @@
     xmlns:local1="clr-namespace:MVVM_Organiser.ViewModel"
     Title="MainWindow"
     Width="800"
-    Height="450">
+    Height="450"
+    WindowStartupLocation="CenterScreen"
+    >
+    <Window.DataContext>
+        <local1:MainWindowViewModel></local1:MainWindowViewModel>
+    </Window.DataContext>
+    
+    <Window.Resources>
+        <ControlTemplate x:Key="ButtonTemplate" TargetType="Button">
+            <Border BorderBrush="Green" BorderThickness="3" CornerRadius="2"
+                    TextBlock.Foreground="Black">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Offset="0" Color="White"></GradientStop>
+                            <GradientStop Offset="1" Color="LightBlue"></GradientStop>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentPresenter RecognizesAccessKey="True"></ContentPresenter>
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
 
     <Grid>
         <DataGrid
@@ -32,8 +54,17 @@
                     Binding="{Binding Path=Text}"
                     Header="Todo"
                     IsReadOnly="False" />
+
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="Select date" 
+                HorizontalAlignment="Left" 
+                Margin="695,17,0,0" 
+                VerticalAlignment="Top" 
+                Width="75" 
+                Template="{StaticResource ButtonTemplate}"
+                />
+
 
     </Grid>
 </Window>

@@ -1,19 +1,15 @@
-﻿using System;
+﻿using MVVM_Organiser.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace MVVM_Organiser.ViewModel
 {
-    public class ToDoViewModel : INotifyPropertyChanged
+    public class MainWindowViewModel : ViewModelBase
     {
-        // TODO. Перенести в папку с моделью.
-        public class DataModel
-        {
-            public bool IsDone { get; set; }
-            public DateTime CreationDate { get; set; }
-            public string Text { get; set; }
-        }
+        
+        
 
         private ObservableCollection<DataModel> _dataItem;
         public ObservableCollection<DataModel> DadaItem
@@ -26,7 +22,7 @@ namespace MVVM_Organiser.ViewModel
             }
         }
 
-        public ToDoViewModel()
+        public MainWindowViewModel()
         {
             DadaItem = new ObservableCollection<DataModel>()
             {

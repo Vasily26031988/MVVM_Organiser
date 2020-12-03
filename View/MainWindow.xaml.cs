@@ -24,7 +24,9 @@ namespace MVVM_Organiser
 		public MainWindow()
 		{
 			InitializeComponent();
-			DataContext = new ToDoViewModel();
+			DataContext = new MainWindowViewModel();
 		}
+
+		
 	}
 }

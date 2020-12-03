@@ -17,18 +17,18 @@ namespace MVVM_Organiser.Model
 		{
 			PATH = path;
 		}
-		public BindingList<ToDoViewModel> LoadData()
+		public BindingList<MainWindowViewModel> LoadData()
 		{
 			var fileExists = File.Exists(PATH);
 			if (!fileExists)
 			{
 				File.CreateText(PATH).Dispose();
-				return new BindingList<ToDoViewModel>();
+				return new BindingList<MainWindowViewModel>();
 			}
 			using (var reader = File.OpenText(PATH))
 			{
 				var fileText = reader.ReadToEnd();
-				return JsonConvert.DeserializeObject<BindingList<ToDoViewModel>>(fileText);
+				return JsonConvert.DeserializeObject<BindingList<MainWindowViewModel>>(fileText);
 			}
 		}
 		public void SaveData(object todoDataList)
@@ -40,4 +40,5 @@ namespace MVVM_Organiser.Model
 			}
 		}
 	}
+	
 }
