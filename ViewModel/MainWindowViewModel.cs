@@ -14,6 +14,7 @@ namespace MVVM_Organiser.ViewModel
         private ObservableCollection<DataModel> _dataItem;
         public ObservableCollection<DataModel> DadaItem
         {
+            
             get { return _dataItem; }
             set
             {
