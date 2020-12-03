@@ -8,13 +8,9 @@ namespace MVVM_Organiser.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        
-        
-
         private ObservableCollection<DataModel> _dataItem;
         public ObservableCollection<DataModel> DadaItem
-        {
-            
+        {         
             get { return _dataItem; }
             set
             {
@@ -22,7 +18,6 @@ namespace MVVM_Organiser.ViewModel
                 OnPropertyChanged(nameof(DadaItem));
             }
         }
-
         public MainWindowViewModel()
         {
             DadaItem = new ObservableCollection<DataModel>()
@@ -30,13 +25,6 @@ namespace MVVM_Organiser.ViewModel
                 new DataModel { CreationDate = DateTime.Now, IsDone = false, Text = "Задача номер 1"},
                 new DataModel { CreationDate = DateTime.Now, IsDone = true, Text = "Задача номер 2" },
             };
-        }
-        #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
+        }          
     }
 }
